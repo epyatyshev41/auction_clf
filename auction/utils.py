@@ -59,3 +59,18 @@ def parse_train_report(exp_name: str) -> pd.DataFrame:
     out_cols = sum([list(x) for x in zip(train_metrics_names, test_metrics_names)], [])
 
     return df.loc[:, ['iteration'] + out_cols]
+
+
+def add_uniq_index_for_missing_values(train_df: pd.DataFrame, col_name: str) -> pd.DataFrame:
+    """
+    Add fake ids to the col_name into the train data
+    :param train_df: train dataframe
+    :param col_name: column to fill nas
+    :return: new dataframe
+    """
+    train_na_idx = train_df.loc[:, col_name].isna()
+
+    train_na_count = train_na_idx.sum()
+    train_df.loc[train_na_idx, col_name] = [f'fake_id_{x}' for x in range(train_na_count)]
+
+    return train_df
