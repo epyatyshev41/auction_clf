@@ -1,3 +1,7 @@
 pandas
 numpy
 matplotlib
+ydata_profiling
+catboost
+sklearn
+scipy
