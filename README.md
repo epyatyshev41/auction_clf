@@ -1,6 +1,3 @@
-# Appodeal
-ML Engineer Test Task
-
 # Structure:
 
 - auction (Module with code)
